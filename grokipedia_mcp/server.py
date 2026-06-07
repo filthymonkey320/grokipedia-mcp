@@ -14,7 +14,7 @@ from grokipedia_api_sdk.exceptions import (
     GrokipediaNotFoundError,
 )
 
-from mcp.server.fastmcp import Context, FastMCP
+from fastmcp import Context, FastMCP
 from mcp.server.session import ServerSession
 from mcp.types import CallToolResult, Icon, TextContent, ToolAnnotations
 from pydantic import Field
