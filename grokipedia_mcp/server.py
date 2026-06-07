@@ -42,7 +42,6 @@ mcp = FastMCP(
     "Grokipedia",
     lifespan=app_lifespan,
     instructions="MCP server for searching and retrieving content from Grokipedia, a wiki-style knowledge base.",
-    icons=[icon],
 )
 
 
