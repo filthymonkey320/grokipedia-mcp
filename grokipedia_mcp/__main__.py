@@ -46,9 +46,9 @@ def main(transport: str, host: str, port: int | None):
             max_age=86400,
         )
 
-        uvicorn.run(app, host=host, port=port, log_level="info")
-    else:
-        mcp.run(transport=transport)
+        # uvicorn.run(app, host=host, port=port, log_level="info")
+# else:
+#     mcp.run(transport=transport)
 
 
 if __name__ == "__main__":
