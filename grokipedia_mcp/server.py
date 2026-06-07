@@ -721,6 +721,5 @@ async def get_page_sections(
         await ctx.error(f"API error: {e}")
         raise RuntimeError(f"Grokipedia API error: {e}") from e
 
-
 if __name__ == "__main__":
     mcp.run()
