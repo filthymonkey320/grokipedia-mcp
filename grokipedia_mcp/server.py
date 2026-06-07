@@ -58,7 +58,7 @@ async def search(
     offset: Annotated[int, Field(description="Pagination offset for results (default: 0)", ge=0)] = 0,
     sort_by: Annotated[str, Field(description="Sort results by 'relevance' or 'views' (default: relevance)")] = "relevance",
     min_views: Annotated[int | None, Field(description="Filter to articles with at least this many views (optional)", ge=0)] = None,
-    ctx: Context[ServerSession, AppContext] | None = None,
+    ctx: Context | None = None,
 ) -> CallToolResult:
     """Search for articles in Grokipedia with optional filtering and sorting."""
     if ctx is None:
@@ -125,7 +125,7 @@ async def search(
 async def get_page(
     slug: Annotated[str, Field(description="Unique slug identifier of the page to retrieve")],
     max_content_length: Annotated[int, Field(description="Maximum length of content to return (default: 5000)", ge=100)] = 5000,
-    ctx: Context[ServerSession, AppContext] | None = None,
+    ctx: Context | None = None,
 ) -> CallToolResult:
     """Get complete page information including metadata, content preview, and citations summary."""
     if ctx is None:
@@ -215,7 +215,7 @@ async def get_page(
 async def get_page_content(
     slug: Annotated[str, Field(description="Unique slug identifier of the page to retrieve content from")],
     max_length: Annotated[int, Field(description="Maximum length of content to return (default: 10000)", ge=100)] = 10000,
-    ctx: Context[ServerSession, AppContext] | None = None,
+    ctx: Context | None = None,
 ) -> CallToolResult:
     """Get only the article content without citations or metadata."""
     if ctx is None:
@@ -289,7 +289,7 @@ async def get_page_content(
 async def get_page_citations(
     slug: Annotated[str, Field(description="Unique slug identifier of page to retrieve citations from")],
     limit: Annotated[int | None, Field(description="Maximum number of citations to return (optional, returns all if not specified)", ge=1)] = None,
-    ctx: Context[ServerSession, AppContext] | None = None,
+    ctx: Context | None = None,
 ) -> CallToolResult:
     """Get the citations list for a specific page."""
     if ctx is None:
@@ -384,7 +384,7 @@ async def get_page_citations(
 async def get_related_pages(
     slug: Annotated[str, Field(description="Unique slug identifier of page to find related pages for")],
     limit: Annotated[int, Field(description="Maximum number of related pages to return (default: 10)", ge=1, le=50)] = 10,
-    ctx: Context[ServerSession, AppContext] | None = None,
+    ctx: Context | None = None,
 ) -> CallToolResult:
     """Get pages that are linked from the specified page."""
     if ctx is None:
@@ -483,7 +483,7 @@ async def get_page_section(
     slug: Annotated[str, Field(description="Unique slug identifier of page to extract section from")],
     section_header: Annotated[str, Field(description="Exact header text of the section to extract (case-insensitive)")],
     max_length: Annotated[int, Field(description="Maximum length of section content to return (default: 5000)", ge=100)] = 5000,
-    ctx: Context[ServerSession, AppContext] | None = None,
+    ctx: Context | None = None,
 ) -> CallToolResult:
     """Extract a specific section from an article by header name."""
     if ctx is None:
@@ -637,7 +637,7 @@ Please provide the two topics you want to compare (or confirm the suggestions ab
 )
 async def get_page_sections(
     slug: Annotated[str, Field(description="Unique slug identifier of page to list sections for")],
-    ctx: Context[ServerSession, AppContext] | None = None,
+    ctx: Context | None = None,
 ) -> CallToolResult:
     """Get a list of all section headers in an article."""
     if ctx is None:
